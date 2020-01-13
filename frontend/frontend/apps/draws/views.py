@@ -22,10 +22,14 @@ def index(request):
 def detail(request,draw_id):
     try:
         a = Draw.objects.get(id = draw_id)
-        a.winner_number = int(a.winner_number)
+        # a.winner_number = int(a.winner_number)
 
     except:
         raise Http404('Not found')
+    try:
+        a.winner_number = int(a.winner_number)
+    except:
+        pass
     all_bets = DrawBets.objects.filter(draw = draw_id)
 
     return render(request, 'draws/detail.html', {'draw':a, 'bets':all_bets})
