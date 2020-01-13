@@ -2,23 +2,30 @@
 {% block title %}{{draw.block_number}}{% endblock%}
 
 {% block content %}
+<div align="center">
 <h2>Тираж № {{draw.id}}</h2>
     {% if draw.status == 0  %}
-<p>Розыгрышь состоится на блоке № {{draw.block_number}}</p>
+<h3>Розыгрышь состоится на блоке № {{draw.block_number}}</h3>
     {% else %}
-<p>Розыгрышь завершен, выпало число  {{draw.winner_number}}</p>
+<h3>Розыгрышь завершен, выпало число  {{draw.winner_number}}</h3>
+</div>
 {% endif %}
 
     {% if bets %}
-<table border="1">
+<table border="1" align="center">
     <tr>
-        <td>BTC address</td>
-        <td>Bet</td>
+        <td align="center">BTC address</td>
+        <td>Selected number</td>
     </tr>
     {% for bet in bets %}
     <tr>
-        <td>{{bet.btc_address}}</td>
-        <td>{{bet.number}}</td>
+        {% if bet.number == draw.winner_number %}
+            <td align="center"><strong>{{bet.btc_address}}</strong></td>
+            <td align="center" ><strong>{{bet.number}}</strong></td>
+        {% else %}
+            <td align="center">{{bet.btc_address}}</td>
+            <td align="center" >{{bet.number}}</td>
+        {% endif %}
     </tr>
         {% endfor%}
 </table>
