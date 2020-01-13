@@ -19,7 +19,7 @@
     </tr>
     {% for bet in bets %}
     <tr>
-        {% if int(bet.number) == int(draw.winner_number) %}
+        {% if bet.number == draw.winner_number %}
             <td align="center"><strong>{{bet.btc_address}}</strong></td>
             <td align="center" ><strong>{{bet.number}}</strong></td>
         {% else %}

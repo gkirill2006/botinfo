@@ -12,10 +12,11 @@ def index(request):
     # last_draws = DrawBets.objects.select_related('Draw', 'DrawBets')
     Total = Draw.objects.filter().count()
     if Total > 10:
-        last_draws = Draw.objects.order_by('id')[Total-20:Total]
+        last_draws = Draw.objects.order_by('id')[Total-25:Total]
     else:
         last_draws = Draw.objects.order_by('id')[0:10]
     # last_draws = Draw.objects.order_by('id')
+    last_draws.winner_number = int(last_draws.winner_number)
     return render(request, 'draws/list.html', {'last_draws' : last_draws})
     # return HttpResponse("Hello world")
 
