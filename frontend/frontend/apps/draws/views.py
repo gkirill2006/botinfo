@@ -16,14 +16,16 @@ def index(request):
     else:
         last_draws = Draw.objects.order_by('id')[0:10]
     # last_draws = Draw.objects.order_by('id')
-    last_draws.winner_number = int(last_draws.winner_number)
     return render(request, 'draws/list.html', {'last_draws' : last_draws})
     # return HttpResponse("Hello world")
 
 def detail(request,draw_id):
     try:
         a = Draw.objects.get(id = draw_id)
+        a.winner_number = int(a.winner_number)
+
     except:
         raise Http404('Not found')
     all_bets = DrawBets.objects.filter(draw = draw_id)
+
     return render(request, 'draws/detail.html', {'draw':a, 'bets':all_bets})
