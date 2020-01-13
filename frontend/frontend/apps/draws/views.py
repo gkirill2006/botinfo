@@ -12,7 +12,7 @@ def index(request):
     # last_draws = DrawBets.objects.select_related('Draw', 'DrawBets')
     Total = Draw.objects.filter().count()
     if Total > 10:
-        last_draws = Draw.objects.order_by('id')[Total-10:Total]
+        last_draws = Draw.objects.order_by('id')[Total-20:Total]
     else:
         last_draws = Draw.objects.order_by('id')[0:10]
     # last_draws = Draw.objects.order_by('id')
