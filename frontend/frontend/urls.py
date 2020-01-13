@@ -19,5 +19,6 @@ from django.urls import path, include
 urlpatterns = [
     path('grappelli/', include('grappelli.urls')), # grappelli URLS
     path('admin/', admin.site.urls),
-    path('draws/', include('draws.urls'), )
+    path('draws/', include('draws.urls')),
+    path('',include('draws.urls'))
 ]
