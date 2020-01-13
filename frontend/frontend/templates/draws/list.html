@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}All Draws{% endblock%}
+
+{% block content %}
+    {% if last_draws %}
+<table border="1">
+    <tr>
+        <td>#</td>
+        <td>Block_id</td>
+        <td>Winner number</td>
+        <td>Date</td>
+        <td>Satus</td>
+    </tr>
+        {% for a in last_draws %}
+    <tr>
+        <td>{{a.id}}</td>
+        <td><a href="{%url 'draws:detail' a.id%}">{{a.block_number}}</a></td>
+        <td>{{a.winner_number}}</td>
+        <td>{{a.created_at|date:"d-m-Y H:i"}}</td>
+        {% if a.status == 1%}
+        <td>Завершен</td>
+        {% else %}
+        <td>В процессе</td>
+        {% endif%}
+
+    </tr>
+        {% endfor%}
+</table>
+    {% else %}
+        Not found
+    {% endif%}
+{% endblock %}

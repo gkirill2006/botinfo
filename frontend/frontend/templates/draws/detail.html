@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}{{draw.block_number}}{% endblock%}
+
+{% block content %}
+<h2>Тираж № {{draw.id}}</h2>
+    {% if draw.status == 0  %}
+<p>Розыгрышь состоится на блоке № {{draw.block_number}}</p>
+    {% else %}
+<p>Розыгрышь завершен, выпало число  {{draw.winner_number}}</p>
+{% endif %}
+
+    {% if bets %}
+<table border="1">
+    <tr>
+        <td>BTC address</td>
+        <td>Bet</td>
+    </tr>
+    {% for bet in bets %}
+    <tr>
+        <td>{{bet.btc_address}}</td>
+        <td>{{bet.number}}</td>
+    </tr>
+        {% endfor%}
+</table>
+    {% else %}
+На данный тираж ставок не было
+    {% endif%}
+{% endblock %}
