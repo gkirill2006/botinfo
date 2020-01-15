@@ -3,11 +3,11 @@
 
 {% block content %}
 <div align="center">
-<h2>Тираж № {{draw.id}}</h2>
+<h2>Draw № {{draw.id}}</h2>
     {% if draw.status == 0  %}
-<h3>Розыгрышь состоится на блоке № {{draw.block_number}}</h3>
+<h3>Next draw is on block № {{draw.block_number}}</h3>
     {% else %}
-<h3>Розыгрышь завершен, выпало число  {{draw.winner_number}}</h3>
+<h3>Wining number {{draw.winner_number}}</h3>
 {% endif %}
 
     {% if bets %}
@@ -29,7 +29,7 @@
         {% endfor%}
 </table>
     {% else %}
-<h3>На данный тираж ставок не было</h3>
+<h3>No bets on this draw registered</h3>
     {% endif%}
 </div>
 {% endblock %}
