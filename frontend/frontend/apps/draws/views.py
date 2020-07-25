@@ -34,10 +34,16 @@ def detail(request,draw_id):
     new_bets = []
     pn = 1
     count_win = 0
+    with_wallet = 0
+    with_wallet_win = 0
     for item in all_bets:
         new_bets.append({'pn': pn, 'btc_address': item.btc_address, 'number': item.number})
         pn += 1
+        if item.btc_address:
+            with_wallet +=1
         if a.winner_number == item.number:
             count_win +=1
-    stata = {'pn' : pn, 'count_win' : count_win}
+            if item.btc_address:
+                with_wallet_win +=1
+    stata = {'pn' : pn, 'count_win' : count_win, 'with_wallet' : with_wallet, 'with_wallet_win': with_wallet_win, }
     return render(request, 'draws/detail.html', {'draw': a, 'bets': new_bets, 'stata' : stata})

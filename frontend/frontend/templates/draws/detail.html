@@ -8,8 +8,11 @@
 <h3>Next draw is on block № {{draw.block_number}}</h3>
     {% else %}
 <h3>Wining number is {{draw.winner_number}}</h3>
-    <p>Всего в игре: {{stata.pn}}</p>
-    <p>Всего выиграло: {{stata.count_win}}</p>
+    <p>Всего в игре: {{stata.pn}} <br>
+    С кошельками: {{stata.with_wallet}}</p>
+
+    <p>Всего выиграло: {{stata.count_win}}<br>
+    С кошельками: {{stata.with_wallet_win}}</p>
 {% endif %}
 
     {% if bets %}
