@@ -13,15 +13,18 @@
     {% if bets %}
 <table border="1" align="center">
     <tr>
+        <td>#</td>
         <td align="center">BTC address</td>
         <td>Selected number</td>
     </tr>
     {% for bet in bets %}
     <tr>
         {% if bet.number == draw.winner_number %}
+            <td>{{bet.pn}}</td>
             <td align="center"><strong>{{bet.btc_address}}</strong></td>
             <td align="center" ><strong>{{bet.number}}</strong></td>
         {% else %}
+            <td>{{bet.pn}}</td>
             <td align="center">{{bet.btc_address}}</td>
             <td align="center" >{{bet.number}}</td>
         {% endif %}

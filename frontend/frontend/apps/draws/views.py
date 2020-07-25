@@ -31,5 +31,9 @@ def detail(request,draw_id):
     except:
         pass
     all_bets = DrawBets.objects.filter(draw = draw_id)
-
-    return render(request, 'draws/detail.html', {'draw':a, 'bets':all_bets})
+    new_bets = []
+    pn = 1
+    for item in all_bets:
+        new_bets.append({'pn': pn, 'btc_address': item.btc_address, 'number': item.number})
+        pn += 1
+    return render(request, 'draws/detail.html', {'draw': a, 'bets': new_bets})
