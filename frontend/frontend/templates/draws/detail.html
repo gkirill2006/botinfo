@@ -6,6 +6,8 @@
 <h2>Draw № {{draw.id}}</h2>
     {% if draw.status == 0  %}
 <h3>Next draw is on block № {{draw.block_number}}</h3>
+    <p>Всего в игре: {{stata.pn}} <br>
+    С кошельками: {{stata.with_wallet}}</p>
     {% else %}
 <h3>Wining number is {{draw.winner_number}}</h3>
     <p>Всего в игре: {{stata.pn}} <br>
