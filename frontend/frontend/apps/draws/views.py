@@ -33,7 +33,11 @@ def detail(request,draw_id):
     all_bets = DrawBets.objects.filter(draw = draw_id)
     new_bets = []
     pn = 1
+    count_win = 0
     for item in all_bets:
         new_bets.append({'pn': pn, 'btc_address': item.btc_address, 'number': item.number})
         pn += 1
-    return render(request, 'draws/detail.html', {'draw': a, 'bets': new_bets})
+        if a.winner_number == item.number:
+            count_win +=1
+    stata = {'pn' : pn, 'count_win' : count_win}
+    return render(request, 'draws/detail.html', {'draw': a, 'bets': new_bets, 'stata' : stata})
